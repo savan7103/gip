@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from templates.seekviral.com/qzain/quiz/Quiz1/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Nov 2024 12:47:48 GMT -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk profile</title>
+    <!-- fonts -->
+    <link rel="stylesheet" href="assets/fonts/font.css">
+    <!-- fontawesome 5 -->
+    <link rel="stylesheet" href="../../../../cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+    <!-- bootstrap 5 -->
+    <link rel="stylesheet" href="assets/css/Bootstrap/bootstrap.min.css">
+    <!-- Custom Css Files -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/animation.css">
+    <!--Result Css-->
+    <link rel="stylesheet" href="assets/css/result_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <main class="overflow-hidden">
+        <!-- <nav class="navbar navbar-expand-lg bg-body-tertiary bg-transparent">
+            <div class="container-fluid">
+              
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            </div>
+          </nav> -->
+        <div class="container">
+            <a class="navbar-brand " href="#"><img class="my-3"
+                    src="assets/images/integrated-enterprises-india-pvt-ltd.webp" style="width:350px;" alt=""></a>
+            <div class="hero__animation">
+                <img src="assets/images/hero_vector_arrow.png" alt="Image">
+                <img src="assets/images/hero_vector_setting.png" alt="Image">
+                <!-- <img src="assets/images/profit.gif" alt="Image"> -->
+                <!-- <img src="images/hero_vector_dollar.png" alt="Image"> -->
+                <!-- <img src="images/ani2.gif" alt="Image"> -->
+                <!-- <img src="assets/images/img/hero_vector_arrow.png" alt="Image"> -->
+            </div>
+            <div class="container mt-2">
+                <div class="row">
+                    <div class="tab-100 order-c col-md-5 p-relative">
+
+                        <!-- side image -->
+                        <div class="side-img">
+                            <img src="assets/images/platform.webp" alt="side-img img-fluid">
+                        </div>
+                    </div>
+                    <div class="tab-100 col-md-7">
+                        <div class="show-section wrapper">
+                            <section class="steps" id="step1-section">
+                                <div class="form-inner">
+                                    <form id="step3" method="post">
+                                        <h2>Please Enter your details</h2>
+                                        <div class="form-inner">
+                                            <!-- <div class="row"> -->
+                                            <!-- Current Age -->
+                                            <div class="row align-items-center justify-content-center">
+                                                <div class="col-md-6">
+                                                    <label class="label " for="customerAge"><img
+                                                            class="img-fluid lable-icon" src="assets/images/field-1.png"
+                                                            alt="">Current Age</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="radio-field">
+                                                        <input type="number" id="customerAge" placeholder="Current Age"
+                                                            required class="form-control" min="18" max="100" />
+                                                        <div id="ageError" class="error-message">Please enter a valid
+                                                            age between 18 and 100.</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Monthly Income -->
+                                            <div class="row align-items-center justify-content-center">
+                                                <div class="col-md-6">
+                                                    <label class="label" for="monthlyIncome"><img
+                                                            class="img-fluid lable-icon" src="assets/images/field-2.png"
+                                                            alt="">Monthly Income</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class=" radio-field">
+                                                        <input type="text" id="monthlyIncome"
+                                                            placeholder="Monthly Income" required
+                                                            class="form-control" oninput="formatCurrency(this)"/>
+                                                        <div id="incomeError" class="error-message">Please enter a valid
+                                                            monthly income (min 100).</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Monthly EMI Commitment -->
+                                            <div class="row align-items-center justify-content-center">
+                                                <div class="col-md-6">
+                                                    <label class="label " for="monthlyCommitment"><img
+                                                            class="img-fluid lable-icon" src="assets/images/field-3.png"
+                                                            alt="">Monthly EMI
+                                                        Commitment</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class=" radio-field">
+                                                        <input type="text" id="monthlyCommitment"
+                                                            placeholder="Monthly Commitment" required
+                                                            class="form-control" min="1"  oninput="formatCurrency(this)"/>
+                                                        <div id="commitmentError" class="error-message">Please enter a
+                                                            valid monthly commitment amount.</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Monthly Investment -->
+                                            <div class="row align-items-center justify-content-center">
+                                                <div class="col-md-6">
+                                                    <label class="label " for="monthlyInvestment"><img
+                                                            class="img-fluid lable-icon" src="assets/images/field-4.png"
+                                                            alt="">Monthly
+                                                        Investment</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class=" radio-field">
+                                                        <input type="text" id="monthlyInvestment"
+                                                            placeholder="Monthly Investment" required
+                                                            class="form-control" min="0"  oninput="formatCurrency(this)"/>
+                                                        <div id="investmentError" class="error-message">Please enter a
+                                                            valid monthly investment amount.</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Current Investment -->
+                                            <div class="row align-items-center justify-content-center">
+                                                <div class="col-md-6">
+                                                    <label class="label " for="currentInvestment"><img
+                                                            class="img-fluid lable-icon" src="assets/images/field-5.png"
+                                                            alt="">Current
+                                                        Investment</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class=" radio-field">
+                                                        <input type="text" id="currentInvestment"
+                                                            placeholder="Current Investment" required
+                                                            class="form-control" min="0"  oninput="formatCurrency(this)"/>
+                                                        <div id="currentInvestmentError" class="error-message">Please
+                                                            enter a valid current investment amount.</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- </div> -->
+                                        </div>
+                                        <div class="next-btn d-inline-block">
+                                            <button type="button" class="next w-100 bttn px-3" id="step3btn">Next <i
+                                                    class="fa-solid fa-arrow-right"></i></button>
+                                        </div>
+                                    </form>
+
+                                    <div class="row justify-content-between">
+                                        <div class="col-md-6 po-re">
+                                            <!-- Investment vs Income Graph -->
+                                            <div class="graph-container" id="graphContainer" style="display: none;">
+                                                <h5 class="my-3">Monthly Income <br> VS <br> Monthly Investment</h5>
+                                                <div class="graph-wrapper">
+                                                    <img src="assets/images/graph.svg" alt="Graph" class="graph-image">
+                                                    <img src="assets/images/niddle.svg" alt="Needle" class="needle"
+                                                        id="needle">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 po-re">
+                                            <!-- EMI Commitment vs Income Graph -->
+                                            <div class="graph-container" id="emiGraphContainer" style="display: none;">
+                                                <h5 class="my-3">Monthly Income <br> VS <br> Monthly EMI Commitment</h5>
+                                                <div class="graph-wrapper">
+                                                    <img src="assets/images/graph.svg" alt="Graph" class="graph-image">
+                                                    <img src="assets/images/niddle.svg" alt="Needle" class="needle" id="emiNeedle">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Dynamic message section -->
+                                        <div class="col-12">
+                                            <div id="dynamicMessage"
+                                                style="display: none; text-align: center; font-size: 20px; font-weight: bold; margin: 20px 0; color: #333;">
+                                                <!-- GIP score and messages will be dynamically updated here -->
+                                            </div>
+                                        </div>
+
+                                        <!-- Next Button -->
+                                        <div id="nxtbtn" style="display:none; text-align: center;">
+                                            <div class="next-btn mt-2 d-inline-block">
+                                                <a href="index.html" class="next py-3 w-100 btn  px-4">
+                                                    Proceed <i class="fa-solid fa-arrow-right"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- result -->
+        </div>
+    </main>
+
+    <div id="error"></div>
+    <div class="bg-b">
+        <div class="container">
+            <div class="card bg-transparent border-0">
+                <!-- <div class="card-header">
+                    <img src="assets/images/integrated-enterprises-india-pvt-ltd.webp" alt="" class="img-fluid w-25">
+                </div> -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <p class="fw-bold">Registered Office:</p>
+
+                            <p> 5A, 5th Floor, Kences Towers, 1, Ramakrishna Street,
+                                T. Nagar, Chennai - 600 017.
+                                Tel. No.: 044 - 28143045/46</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p class="fw-bold">Admin Office:</p>
+
+                            <p> 501-502, Coral Classic Commercial Complex,
+                                Road No. 20, Chembur East,
+                                Mumbai - 400 071.
+                                Tel. No.: 022 - 4066 1800</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p class="fw-bold">Branch Timings</p>
+
+                            <p>Mon - Fri (9:30AM - 6PM)
+                                Sat (9:30AM - 1:30PM)
+
+                                1800 425 23456 customercare@integratedindia.in</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- bootstrap 5 -->
+    <script src="assets/js/Bootstrap/bootstrap.min.js"></script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Result JS -->
+    <script src="assets/js/result.js"></script>
+
+    <!-- Custom js -->
+    <script src="assets/js/custom.js"></script>
+
+</body>
+
+
+</html>

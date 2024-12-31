@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Integratedindia</title>
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicons/fiveicon.ico" />
+    <meta name="theme-color" content="#ffffff" />
+    <link href="assets/css/theme.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="assets/css/Bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Include WOW.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script>
+        let amount = 1234567.89;
+        let formattedAmount = amount.toLocaleString('en-IN', { style: 'currency', currency: 'INR' });
+        console.log(formattedAmount);  // Output: ₹12,34,567.89
+    </script>
+    <style>
+        .form-label {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+
+        .que {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        /* Base Style for the Radio Buttons */
+        .form-check-input {
+            position: relative;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #143980;
+            /* Default border color */
+            outline: none;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        /* Hover effect on radio buttons */
+        .form-check-input:hover {
+            cursor: pointer;
+            border-color: #0056b3;
+        }
+
+        /* Style for the selected radio button */
+        .form-check-input:checked {
+            background-color: #00AE42;
+            /* Selected background color */
+            border-color: #00AE42;
+            /* Border color when selected */
+        }
+
+        /* Style for the label text next to radio button */
+        .form-check-label {
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+            padding-left: 10px;
+        }
+
+        /* Style when the radio button is disabled */
+        .form-check-input:disabled {
+            background-color: #f0f0f0;
+            /* Light gray background */
+            border-color: #d3d3d3;
+            /* Light gray border */
+            cursor: not-allowed;
+            /* Show "not-allowed" cursor when disabled */
+        }
+
+        /* Style for the disabled label */
+        .form-check-input:disabled+.form-check-label {
+            color: #d3d3d3;
+            /* Light gray text color when disabled */
+        }
+
+        /* Style for the container when radio button is selected */
+        .form-check-input:checked+.form-check-label {
+            font-weight: 600;
+            color: #143980;
+        }
+
+
+        .form-container {
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+
+            margin: auto;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        .form-control:focus {
+            border-color: #143980;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+        }
+
+        input {
+            margin: 10px 0;
+        }
+
+        #investmentSection {
+            margin-top: 30px;
+        }
+
+        .calculator-section {
+            display: none;
+            margin-top: 30px;
+        }
+
+        label {
+            margin-bottom: 0 !important;
+            color: #143980 !important;
+        }
+
+        /* Additional styling for the card header */
+        .card h5 {
+            margin-top: 15px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            background-color: #143a8023;
+            border: none;
+        }
+
+        /* Hover effect for card title (subtle grow) */
+        .card:hover h5 {
+            transform: scale(1.05);
+            /* Slight scaling on hover */
+        }
+
+        /* Styling for the question container */
+        .question-container {
+            margin-top: 30px;
+        }
+
+        /* Styling for the progress bar container */
+        .progress-bar-container {
+            margin-top: 10px;
+        }
+
+        /* Disabled card effect */
+        .card.disabled {
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        /* Flexbox layout for question cards */
+        .question-card {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Option card base style */
+        .option-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+            cursor: pointer;
+            background-color: #fff;
+            /* Default background */
+        }
+
+        /* Hover effect for option cards */
+        .option-card:hover {
+            background-color: #f8f9fa;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+            /* Lift effect on hover */
+        }
+
+        /* Active/selected option card style */
+        .option-card.selected {
+            background-color: #d1e7dd;
+            border-color: #0f5132;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* Highlight shadow on selection */
+        }
+
+        /* Card body styles (image size adjustment) */
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Adjust image size and animation for images inside the card body */
+        .card-body img {
+            width: 70px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        /* Zoom-in effect for images when hovering over card */
+        .card:hover img {
+            transform: scale(1.1);
+            /* Slight zoom effect */
+            opacity: 0.8;
+            /* Slight transparency */
+        }
+
+        /* Card fade-in effect (initial load) */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        /* Keyframes for fade-in animation */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Animation for individual cards appearing (slide up) */
+        .card-container .card {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideUp 0.6s ease-in-out forwards;
+        }
+
+        .card-container .card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .card-container .card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .card-container .card:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .card-container .card:nth-child(4) {
+            animation-delay: 0.8s;
+        }
+
+        /* Slide-up effect for the cards */
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Option card animation when selected */
+        .option-card.selected {
+            animation: optionSelect 0.3s ease-in-out;
+        }
+
+        /* Animation for option card selection */
+        @keyframes optionSelect {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+
+            50% {
+                transform: scale(1.05);
+                /* Slight grow when selected */
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <!-- <script src="assets/js/header.js"></script>
+        <script src="assets/js/footer.js"></script> -->
+        <div class="bg-b">
+            <div class="container bg-transparent ">
+                <a class="navbar-brand " href="#"><img class="my-3"
+                        src="assets/images/integrated-enterprises-india-pvt-ltd.webp" style="width:350px;" alt=""></a>
+            </div>
+        </div>
+        <section class="">
+            <div class="container pt-5 pb-120">
+
+                <div class="row">
+                    <div class="col-md-8">
+
+                        <!-- Option Selection for Customer ID or Mobile Number -->
+                        <form id="mergedForm" class="  rounded-3 m-auto p-1 p-md-5 col-12 col-lg-8">
+                            <h3>Fill-up Details to Proceed</h3>
+                            <div class="row ">
+                                <!-- Mobile Number Input -->
+                                <div class="form-group col-md-5">
+                                    <label>Mobile Number</label>
+                                    <input type="text" id="mobileNumber" placeholder="Mobile Number"
+                                        class="form-control contact-input " />
+                                </div>
+
+                                <!-- PAN Number Input -->
+                                <div class="form-group col-md-5">
+                                    <label>PAN Number</label>
+                                    <input type="text" id="panNumber" placeholder="PAN Number"
+                                        class="form-control contact-input" />
+                                </div>
+                            </div>
+                            <!-- Terms and Conditions -->
+                            <div class="form-group opacity-25" id="termsGroup">
+                                <label for="termsCheckbox" class="fs--14">
+                                    <input type="checkbox" id="termsCheckbox" checked />
+                                    By Proceeding, I agree to Integrated’s T&C, Privacy Policy & Credit Bureau’s Terms &
+                                    conditions
+                                </label>
+                            </div>
+                            <div id="termsError" class="error hidden">You must agree to the Terms and Conditions to
+                                proceed.</div>
+
+                            <div id="errorMessage" class="error hidden">Please enter valid details.</div>
+
+                            <!-- OTP Input (Initially Hidden) -->
+                            <div class="">
+                                <div id="otpSection" class="form-group hidden col-md-12">
+                                    <div class="col-md-5">
+                                        <label>OTP</label>
+                                        <input type="text" id="otpInput" placeholder="Enter OTP" class="form-control"
+                                            maxlength="6" />
+                                    </div>
+                                    <div class="d-flex">
+                                        <div class="col-4">
+                                            <button type="button" class="btn btn-primary mt-2"
+                                                onclick="verifyOTP()">Verify
+                                                OTP</button>
+                                        </div>
+                                        <div class="col-8">
+                                            <div id="timerContainer" class="hidden mt-2 col-md-6">
+                                                <span id="timer"></span>
+                                                <button type="button" id="resendButton" class="btn btn-secondary hidden"
+                                                    onclick="resendOTP()">Resend OTP</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Submit Button -->
+                            <button type="button" id="submitButton" class="btn btn-primary mt-2"
+                                onclick="handleFormSubmit()">Submit</button>
+                        </form>
+
+                        <form id="editForm" class="hidden m-auto p-2 col-12">
+                            <div class="row gap-4">
+                                <div class="form-group position-relative col-md-5">
+                                    <label class="text-b m-0" for="fullName">Full Name</label>
+                                    <input type="text" id="fullName" placeholder="Full Name" required
+                                        class="form-control" disabled />
+                                    <button type="button" class="edit-icon" onclick="toggleEdit('fullName')">
+                                        <img src="assets/images/edit_icon.png" alt="Edit" class="edit-icon-img" />
+                                    </button>
+                                </div>
+                                <div class="form-group position-relative col-md-3">
+                                    <label class="text-b m-0" for="dob">DOB</label>
+                                    <input type="date" id="dob" placeholder="DOB" required class="form-control"
+                                        disabled />
+                                    <button type="button" class="edit-icon" onclick="toggleEdit('dob')">
+                                        <img src="assets/images/edit_icon.png" alt="Edit" class="edit-icon-img" />
+                                    </button>
+                                </div>
+                                <div class="form-group position-relative col-md-3">
+                                    <label class="text-b m-0" for="gender">Gender</label>
+                                    <input type="text" id="gender" placeholder="Gender" required class="form-control"
+                                        disabled />
+                                    <button type="button" class="edit-icon" onclick="toggleEdit('gender')">
+                                        <img src="assets/images/edit_icon.png" alt="Edit" class="edit-icon-img" />
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row  justify-content-end">
+                                <div class="col-12 col-lg-5 form-group position-relative">
+                                    <label class="text-b m-0" for="email">Email</label>
+                                    <input type="email" id="email" placeholder="Email" required class="form-control"
+                                        disabled />
+                                    <button type="button" class="edit-icon" onclick="toggleEdit('email')">
+                                        <img src="assets/images/edit_icon.png" alt="Edit" class="edit-icon-img" />
+                                    </button>
+                                </div>
+                                <div class="col-12 col-lg-7 form-group mt-4">
+                                    <!-- Add Family Member Button -->
+                                    <div class="d-flex align-items-center justify-content-end gap-3">
+                                        <span class="text-b">Add Family Member
+                                        </span>
+                                        <button type="button" class="btttn  addFamilyMember"><img
+                                                src="assets/images/add_user.png" class="img-fluid"
+                                                alt="Add User" /></button>
+                                    </div>
+                                    <!-- <button type="button" id="addFamilyMember" class="btttn">
+                                        </button> -->
+                                </div>
+                            </div>
+                            <div id="familyMembersContainer"></div>
+                            <!-- Initial "Add Family Member" Button -->
+                        </form>
+                        <section id="showriskprofile" class="hidden pt-0">
+                            <div class="container form-container">
+                                <h4 class="text-center mb-4 fw-bold">Select Your Risk Profile</h4>
+                                <form>
+                                    <div id="risk-profile-selection" class="mb-3">
+                                        <div class="d-flex justify-content-around">
+                                            <div id="conservativeProfile" class="form-check">
+                                                <input class="form-check-input" type="radio" name="riskProfile"
+                                                    id="conservative" value="Conservative">
+                                                <label class="form-check-label" for="conservative">Conservative</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="riskProfile"
+                                                    id="moderate" value="Moderate">
+                                                <label class="form-check-label" for="moderate">Moderate</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="riskProfile"
+                                                    id="aggressive" value="Aggressive">
+                                                <label class="form-check-label" for="aggressive">Aggressive</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p class="important-link fw-bold" id="riskAssessmentLink">
+                                        If you are not able to select your risk profile <br>
+                                        you can assess your risk profile in just 10 sec
+                                    </p>
+
+                                    <!-- Investment Section (appears when the link is clicked) -->
+                                    <div id="investmentSection" class="mb-5">
+                                        <div class="container">
+                                            <div class="card-container row gap-4 justify-content-center">
+                                                <div class="card col-md-5" id="travelCard">
+                                                    <div class="card-body">
+                                                        <img src="assets/images/travel.png" alt="" class="img-fluid">
+                                                        <h5 class="card-title">Travel & Adventure</h5>
+                                                        <p>Discover your travel style and adventure preferences</p>
+                                                    </div>
+                                                </div>
+                                                <div class="card col-md-5" id="financialCard">
+                                                    <div class="card-body">
+                                                        <img src="assets/images/finance.png" alt="" class="img-fluid">
+                                                        <h5 class="card-title">Financial Decisions</h5>
+                                                        <p>Analyze your approach to financial planning and investments
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="card col-md-5" id="careerCard">
+                                                    <div class="card-body">
+                                                        <img src="assets/images/carrer.png" alt="" class="img-fluid">
+                                                        <h5 class="card-title">Career Choices</h5>
+                                                        <p>Understand your professional risk appetite and
+                                                            decision-making</p>
+                                                    </div>
+                                                </div>
+                                                <div class="card col-md-5" id="sportsCard">
+                                                    <div class="card-body">
+                                                        <img src="assets/images/sports.png" alt="" class="img-fluid">
+                                                        <h5 class="card-title">Sports & Activities</h5>
+                                                        <p>Explore your athletic inclinations and activity preferences
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="assessmentSection" class="question-container mt-4"></div>
+                                        </div>
+                                    </div>
+                                    <div id="calculator-section" class="mb-4" style="display:none;">
+                                        <section class="pb-0">
+                                            <div class="container">
+                                                <h4 style="font-size: 20px;" class="fw-bold text-center ">Based on your risk profile, we offer the
+                                                    following wealth creation options tailored to your needs.</h4>
+                                                <div class="row justify-content-center">
+                                                    <!-- Goal Plus Card -->
+                                                    <div class="col-md-4 col-sm-6 bo">
+                                                        <a class="text-muted" href="finance-goal.html">
+                                                            <div class="calculator-card text-center">
+                                                                <div class="card-body">
+                                                                    <label for="check2" class="checkbox-label"></label>
+                                                                    <img src="assets/images/goal-plus.webp"
+                                                                        class="img-fluid mb-3" alt="Goal Plus">
+                                                                    <h5 class="calculator-card-title">Goal Plus</h5>
+                                                                    <p class="calculator-card-text">Tailored plans to
+                                                                        achieve your financial milestones</p>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <!-- Protect Plus Card -->
+                                                    <div class="col-md-4 col-sm-6 bo">
+                                                        <a class="text-muted" href="protect-plus.html">
+                                                            <div class="calculator-card text-center">
+                                                                <div class="card-body">
+                                                                    <label for="check3" class="checkbox-label"></label>
+                                                                    <img src="assets/images/protect-plus.webp"
+                                                                        class="img-fluid mb-3" alt="Protect Plus">
+                                                                    <h5 class="calculator-card-title">Protect Plus</h5>
+                                                                    <p class="calculator-card-text">Comprehensive
+                                                                        protection
+                                                                        for your life</p>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </form>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-md-4 mb-3 mb-md-0 exist-img">
+                        <img src="assets/images/platform.webp" class="img-fluid" alt=Image" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-b">
+                <div class="container">
+                    <div class="card bg-transparent border-0">
+                        <!-- <div class="card-header">
+                            <img src="assets/images/integrated-enterprises-india-pvt-ltd.webp" alt="" class="img-fluid w-25">
+                        </div> -->
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <p class="fw-bold">Registered Office:</p>
+
+                                    <p> 5A, 5th Floor, Kences Towers, 1, Ramakrishna Street,
+                                        T. Nagar, Chennai - 600 017.
+                                        Tel. No.: 044 - 28143045/46</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <p class="fw-bold">Admin Office:</p>
+
+                                    <p> 501-502, Coral Classic Commercial Complex,
+                                        Road No. 20, Chembur East,
+                                        Mumbai - 400 071.
+                                        Tel. No.: 022 - 4066 1800</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <p class="fw-bold">Branch Timings</p>
+
+                                    <p>Mon - Fri (9:30AM - 6PM)
+                                        Sat (9:30AM - 1:30PM)
+
+                                        1800 425 23456 customercare@integratedindia.in</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Listen for changes on the radio buttons
+            $('input[name="riskProfile"]').on('change', function () {
+                // Get the selected value
+                var selectedValue = $(this).val();
+
+                // Fade out all sections first
+                $('#riskAssessmentLink').fadeOut();
+                $('#investmentSection').fadeOut();
+                $('#calculator-section').fadeOut();  // Hide calculator initially
+
+                // Disable all radio buttons first
+                $('input[name="riskProfile"]').prop('disabled', true);
+
+                // Enable the selected radio button (in case they want to change it)
+                $('input[name="riskProfile"][value="' + selectedValue + '"]').prop('disabled', false);
+
+                // Show the relevant section based on the selected value
+                $('#calculator-section').fadeIn();  // Show calculator after selecting
+                if (selectedValue === "Conservative") {
+                    // Show content for Conservative profile
+                    $('#conservativeProfile').fadeIn();
+                } else if (selectedValue === "Moderate") {
+                    // Show content for Moderate profile
+                    $('#moderateProfile').fadeIn();
+                } else if (selectedValue === "Aggressive") {
+                    // Show content for Aggressive profile
+                    $('#aggressiveProfile').fadeIn();
+                }
+            });
+        });
+
+
+    </script>
+    <script>
+
+        const questions = {
+            travel: [
+                { question: "When planning a vacation, which approach do you prefer?", options: [{ text: "Detailed itinerary planned months in advance", value: 1 }, { text: "Rough plan with room for spontaneity", value: 2.5 }, { text: "Spontaneous decisions with minimal planning", value: 5 }] },
+                { question: "How do you feel about traveling to countries with different languages and cultures?", options: [{ text: "Prefer familiar destinations where I speak the language", value: 1 }, { text: "Comfortable with popular tourist destinations abroad", value: 2.5 }, { text: "Excited to explore off-the-beaten-path destinations", value: 5 }] },
+                { question: "What's your preferred accommodation style when traveling?", options: [{ text: "Luxury hotels with full amenities", value: 1 }, { text: "Mix of hotels and local rentals", value: 2.5 }, { text: "Hostels or camping for authentic experiences", value: 5 }] },
+                { question: "How do you approach local cuisine when traveling?", options: [{ text: "Stick to familiar restaurants and chains", value: 1 }, { text: "Try local restaurants with good reviews", value: 2.5 }, { text: "Explore street food and local delicacies", value: 5 }] },
+                { question: "What's your approach to adventure activities while traveling?", options: [{ text: "Guided tours and safe activities only", value: 1 }, { text: "Mix of guided and independent activities", value: 2.5 }, { text: "Seek out challenging and unique experiences", value: 5 }] }
+            ],
+            financial: [
+                { question: "How do you typically handle unexpected financial windfalls?", options: [{ text: "Immediately save or invest in low-risk options", value: 1 }, { text: "Split between savings and moderate investments", value: 2.5 }, { text: "Invest in high-potential opportunities", value: 5 }] },
+                { question: "What's your approach to emergency savings?", options: [{ text: "Keep 12+ months of expenses in cash", value: 1 }, { text: "Maintain 6 months with some investments", value: 2.5 }, { text: "Minimal cash, prefer investments", value: 5 }] },
+                { question: "How do you approach new investment opportunities?", options: [{ text: "Extensive research and professional advice", value: 1 }, { text: "Basic research with moderate allocation", value: 2.5 }, { text: "Quick decisions based on potential", value: 5 }] },
+                { question: "What's your preferred investment portfolio composition?", options: [{ text: "Mainly bonds and low-risk funds", value: 1 }, { text: "Balanced mix of stocks and bonds", value: 2.5 }, { text: "High-growth stocks and alternatives", value: 5 }] },
+                { question: "How do you handle market downturns?", options: [{ text: "Sell to prevent further losses", value: 1 }, { text: "Hold current positions and wait", value: 2.5 }, { text: "Buy more at lower prices", value: 5 }] }
+            ],
+            career: [
+                { question: "What's your preferred approach to career advancement?", options: [{ text: "Steady progression within the same company", value: 1 }, { text: "Strategic moves between companies for growth", value: 2.5 }, { text: "Entrepreneurial ventures and startups", value: 5 }] },
+                { question: "How do you approach job security vs. potential growth?", options: [{ text: "Prioritize job security and stability", value: 1 }, { text: "Balance security with growth opportunities", value: 2.5 }, { text: "Prioritize growth potential over security", value: 5 }] },
+                { question: "How do you handle career transitions?", options: [{ text: "Only when absolutely necessary", value: 1 }, { text: "When clear opportunities arise", value: 2.5 }, { text: "Actively seek new challenges", value: 5 }] },
+                { question: "What's your approach to skill development?", options: [{ text: "Focus on current role requirements", value: 1 }, { text: "Balanced current and future skills", value: 2.5 }, { text: "Learn emerging technologies/skills", value: 5 }] },
+                { question: "How do you view remote work opportunities?", options: [{ text: "Prefer traditional office setting", value: 1 }, { text: "Hybrid approach balancing both", value: 2.5 }, { text: "Fully remote with global opportunities", value: 5 }] }
+            ],
+            sports: [
+                { question: "Which type of recreational activities do you prefer?", options: [{ text: "Low-intensity activities with minimal risk", value: 1 }, { text: "Moderate sports with some challenge", value: 2.5 }, { text: "High-adrenaline extreme sports", value: 5 }] },
+                { question: "How do you approach new sports or activities?", options: [{ text: "Stick to familiar activities", value: 1 }, { text: "Try new activities with guidance", value: 2.5 }, { text: "Eagerly explore new challenges", value: 5 }] },
+                { question: "What's your preferred training intensity?", options: [{ text: "Light, consistent workouts", value: 1 }, { text: "Progressive intensity training", value: 2.5 }, { text: "High-intensity, challenging workouts", value: 5 }] },
+                { question: "How do you approach competitive sports?", options: [{ text: "Prefer non-competitive activities", value: 1 }, { text: "Casual league participation", value: 2.5 }, { text: "Highly competitive tournaments", value: 5 }] },
+                { question: "What's your approach to outdoor activities?", options: [{ text: "Structured, guided experiences", value: 1 }, { text: "Mix of guided and independent", value: 2.5 }, { text: "Independent wilderness adventures", value: 5 }] }
+            ]
+        };
+
+        let currentAssessment = "";
+        let currentQuestion = 0;
+        let totalScore = 0;
+        const maxScore = 25;
+        const totalQuestions = 5;
+        function displayResult() {
+            const percentage = (totalScore / maxScore) * 100;
+            const resultCategory = percentage <= 40
+                ? "Conservative"
+                : percentage <= 70
+                    ? "Moderate"
+                    : "Aggressive";
+
+            let percentageClass = ""; // This will hold the class to apply based on the percentage
+            // Determine the color for the percentage based on the result category
+            if (resultCategory === "Conservative") {
+                percentageClass = "text-success"; // Green for Conservative
+            } else if (resultCategory === "Moderate") {
+                percentageClass = "text-warning"; // Orange for Moderate
+            } else if (resultCategory === "Aggressive") {
+                percentageClass = "text-danger"; // Red for Aggressive
+            }
+
+            const form = document.getElementById("assessmentSection");
+            form.innerHTML = `
+                <div>
+                    <h3 class="text-center">Your Risk Profile</h3>
+                    <p class="text-center fw-bold fs-5 ${percentageClass}">Overall Risk Score: ${percentage.toFixed(2)}%</p>
+                    <p class="text-center fw-bold fs-5  ${percentageClass}">Category: ${resultCategory}</p>
+                </div>
+            `;
+
+            // Show the calculator section
+            $('#calculator-section').fadeIn(); // Smoothly show the calculator section
+            console.log(`Calculator section displayed for ${resultCategory} category.`);
+        }
+
+
+
+        function showInvestmentSection() {
+            alert("Redirecting to risk assessment section.");
+        }
+
+        function loadQuestion(assessmentType) {
+            const form = document.getElementById('assessmentSection');
+            form.innerHTML = "";
+
+            const assessmentQuestions = questions[assessmentType];
+            if (currentQuestion < assessmentQuestions.length) {
+                const question = assessmentQuestions[currentQuestion];
+                const questionHtml = `
+                        <div>
+                            <h4>${question.question}</h4>
+                            <div class="question-card">
+                                ${question.options
+                        .map(
+                            (option) => `
+                                    <div class="option-card" data-value="${option.value}">
+                                        ${option.text}
+                                    </div>
+                                `
+                        )
+                        .join('')}
+                            </div>
+                            <div class="question-counter mt-5">
+                                Question ${currentQuestion + 1} of ${totalQuestions}
+                            </div>
+                        </div>`;
+                form.innerHTML = questionHtml;
+            } else {
+                displayResult();
+            }
+        }
+
+        function showQuestions(cardId, assessmentType) {
+            document.getElementById('risk-profile-selection').style.display = 'none';
+            document.querySelectorAll('.card').forEach(card => {
+                if (card.id !== cardId) {
+                    card.style.display = 'none';
+                }
+            });
+
+            currentAssessment = assessmentType;
+            currentQuestion = 0;
+            totalScore = 0;
+            loadQuestion(assessmentType);
+        }
+
+        document.getElementById('travelCard').addEventListener('click', () => {
+            showQuestions('travelCard', 'travel');
+        });
+
+        document.getElementById('financialCard').addEventListener('click', () => {
+            showQuestions('financialCard', 'financial');
+        });
+
+        document.getElementById('careerCard').addEventListener('click', () => {
+            showQuestions('careerCard', 'career');
+        });
+
+        document.getElementById('sportsCard').addEventListener('click', () => {
+            showQuestions('sportsCard', 'sports');
+        });
+
+        document.addEventListener('click', (event) => {
+            if (event.target.classList.contains('option-card')) {
+                const selectedValue = parseFloat(event.target.dataset.value);
+                totalScore += selectedValue;
+
+                currentQuestion++;
+                loadQuestion(currentAssessment);
+            }
+        });
+    </script>
+    <script>
+        function showCalculatorOptions() {
+            const riskProfile = document.querySelector('input[name="riskProfile"]:checked');
+            if (riskProfile) {
+                document.getElementById('calculator-section').style.display = 'block';
+                document.getElementById('investmentSection').style.display = 'none';
+            }
+        }
+
+        function showInvestmentSection() {
+            // Show the investment section
+            const investmentSection = document.getElementById('investmentSection');
+            if (investmentSection) {
+                investmentSection.classList.remove('hidden');
+                investmentSection.style.display = 'block'; // Ensure the section is visible
+                document.getElementById('calculator-section').style.display = 'none'; // Hide other sections
+            } else {
+                console.error('Investment section element not found.');
+            }
+
+            // Retain selected risk profile
+            const riskProfile = document.querySelector('input[name="riskProfile"]:checked');
+            if (riskProfile) {
+                console.log(`Selected risk profile: ${riskProfile.value}`);
+                riskProfile.checked = true; // Ensure it remains checked
+            } else {
+                console.log("No risk profile selected.");
+            }
+
+            // Hide the risk-profile-selection section
+            const riskProfileSelection = document.getElementById("risk-profile-selection");
+            if (riskProfileSelection) {
+                riskProfileSelection.style.display = "none";
+                console.log("Risk profile selection section hidden.");
+            } else {
+                console.error("Element with ID 'risk-profile-selection' not found.");
+            }
+        }
+    </script>
+
+    <script src="assets/js/theme.js"></script>
+    <script>
+        function lockSelection() {
+            const riskProfileRadios = document.querySelectorAll('input[name="riskProfile"]');
+
+
+            // Disable all radio buttons in the group
+            riskProfileRadios.forEach((radio) => {
+                radio.disabled = true;
+            });
+
+            // Show the calculator section
+            const calculator = document.getElementById('calculator-section');
+            if (calculator) {
+                calculator.classList.remove('hidden');
+                calculator.style.display = 'block';
+            }
+
+            // Hide the "If you are not able to select your risk profile" link
+            const investmentLink = document.getElementById('investmentLink');
+            if (investmentLink) {
+                investmentLink.style.display = 'none';
+            }
+        }
+        new WOW().init();
+
+        // Show the 'showriskprofile' section
+        function showRiskProfileSection() {
+            const showRiskProfile = document.getElementById('showriskprofile');
+
+            if (showRiskProfile) {
+                console.log('Showing #showriskprofile');
+                showRiskProfile.classList.remove('hidden');
+                showRiskProfile.style.display = 'none'; // Ensure it is shown
+            } else {
+                console.error('showriskprofile section not found.');
+            }
+        }
+
+        document.querySelectorAll('input[name="contactOption"]').forEach((radio) => {
+            radio.addEventListener("change", function () {
+                // No need to hide or show fields based on the selected option anymore
+            });
+        });
+        document.querySelectorAll('input[name="contactOption"]').forEach((radio) => {
+            radio.addEventListener("change", function () {
+                // No need to hide or show fields based on the selected option anymore
+            });
+        });
+
+        // Function to handle form submission and send OTP
+        function handleFormSubmit() {
+            const panNumber = document.getElementById("panNumber").value.trim().toUpperCase();
+            const mobileNumber = document.getElementById("mobileNumber").value.trim();
+            const termsCheckbox = document.getElementById("termsCheckbox").checked;
+            const errorMessage = document.getElementById("errorMessage");
+            const termsError = document.getElementById("termsError");
+            const otpSection = document.getElementById("otpSection");
+            const submitButton = document.getElementById("submitButton");
+            const timerContainer = document.getElementById("timerContainer");
+            const resendButton = document.getElementById("resendButton");
+
+            // Reset previous error messages
+            errorMessage.classList.add("hidden");
+            termsError.classList.add("hidden");
+
+            // Validate inputs
+            if (!/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(panNumber)) {
+                errorMessage.textContent = "Please enter a valid PAN Number.";
+                errorMessage.classList.remove("hidden");
+                return;
+            }
+
+            if (!/^\d{10}$/.test(mobileNumber)) {
+                errorMessage.textContent = "Please enter a valid 10-digit Mobile Number.";
+                errorMessage.classList.remove("hidden");
+                return;
+            }
+
+            if (!termsCheckbox) {
+                termsError.textContent = "You must agree to the Terms and Conditions.";
+                termsError.classList.remove("hidden");
+                return;
+            }
+
+            // Show OTP section and hide Submit button
+            otpSection.classList.remove("hidden");
+            submitButton.classList.add("hidden");
+
+            // Show timer container
+            timerContainer.classList.remove("hidden");
+            resendButton.classList.add("hidden"); // Hide resend button initially
+
+            // Simulate sending OTP
+            sendOTP();
+
+            // Start the timer for Resend OTP (45 seconds)
+            startTimer(45, "timer", () => {
+                resendButton.classList.remove("hidden"); // Show Resend OTP button after 45 seconds
+            });
+        }
+
+        // Function to simulate sending OTP
+        function sendOTP() {
+            const otp = "123456"; // Hardcoded OTP for simulation
+            alert(`Your OTP is ${otp}`); // Display OTP alert
+        }
+
+        // Timer function (adjustable duration)
+        function startTimer(durationInSeconds, timerElementId, callback) {
+            const timerElement = document.getElementById(timerElementId);
+            let remainingTime = durationInSeconds;
+
+            const timerInterval = setInterval(() => {
+                const minutes = Math.floor(remainingTime / 60);
+                const seconds = remainingTime % 60;
+                timerElement.textContent = `Time remaining: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                remainingTime--;
+
+                if (remainingTime < 0) {
+                    clearInterval(timerInterval);
+                    timerElement.textContent = ""; // Clear timer text
+                    callback(); // Execute callback when timer ends
+                }
+            }, 1000);
+        }
+
+        // Function to verify OTP input
+        function verifyOTP() {
+            const otpValue = document.getElementById("otpInput").value.trim();
+            const termsCheckbox = document.getElementById("termsCheckbox").checked;
+            const termsError = document.getElementById("termsError");
+
+            // Ensure Terms and Conditions are agreed upon
+            if (!termsCheckbox) {
+                termsError.textContent = "You must agree to the Terms and Conditions.";
+                termsError.classList.remove("hidden");
+                return;
+            }
+
+            // Reset previous error message
+            termsError.classList.add("hidden");
+
+            if (otpValue === "123456") { // Match OTP
+                alert("OTP verified successfully.");
+                // Show fetched user data form
+                showUserDataForm();
+            } else {
+                alert("Invalid OTP. Please try again.");
+            }
+        }
+
+        // Function to resend OTP
+        function resendOTP() {
+            alert("Resending OTP...");
+            sendOTP();
+
+            // Restart the timer (45 seconds)
+            const resendButton = document.getElementById("resendButton");
+            resendButton.classList.add("hidden"); // Hide resend button during countdown
+            startTimer(45, "timer", () => {
+                resendButton.classList.remove("hidden"); // Show resend button after countdown
+            });
+        }
+
+        // Function to show the edit form after OTP is verified
+        function showUserDataForm() {
+            const editForm = document.getElementById("editForm");
+            const mergedForm = document.getElementById("mergedForm");
+
+            // Hide the merged form and show the edit form
+            mergedForm.classList.add("hidden");
+            editForm.classList.remove("hidden");
+        }
+
+
+        // Function to update button states based on Terms and Conditions checkbox
+        function updateButtonStates() {
+            const termsCheckbox = document.getElementById("termsCheckbox");
+            const submitButton = document.getElementById("submitButton");
+            const verifyOtpButton = document.querySelector("#otpSection button");
+            const termsGroup = document.getElementById("termsGroup");
+
+            if (termsCheckbox.checked) {
+                submitButton.disabled = false;
+                verifyOtpButton.disabled = false;
+                termsGroup.classList.remove("opacity-100");
+                termsGroup.classList.add("opacity-25");
+            } else {
+                submitButton.disabled = true;
+                verifyOtpButton.disabled = true;
+                termsGroup.classList.remove("opacity-25");
+                termsGroup.classList.add("opacity-100");
+            }
+        }
+
+        // Add event listener to Terms and Conditions checkbox
+        document.getElementById("termsCheckbox").addEventListener("change", updateButtonStates);
+
+        // Initialize button states on page load
+        updateButtonStates();
+
+
+        function showUserDataForm() {
+            const editForm = document.getElementById("editForm");
+            const mergedForm = document.getElementById("mergedForm");
+            const showriskprofile = document.getElementById("showriskprofile");
+
+
+            // Hide the merged form and show the edit form
+            mergedForm.classList.add("hidden");
+            editForm.classList.remove("hidden");
+            showriskprofile.classList.remove("hidden");
+
+            // Fetch user data
+            fetchUserData();
+        }
+        function toggleEdit(fieldId) {
+            const field = document.getElementById(fieldId);
+
+            // If the field is currently disabled, enable it and change the button icon
+            if (field.disabled) {
+                field.disabled = false; // Enable field
+                field.style.backgroundColor = "#f8f9fa"; // Optionally change background to indicate editing
+            } else {
+                field.disabled = true; // Disable field
+                field.style.backgroundColor = "#fff"; // Optionally change background back to non-edit mode
+            }
+        }
+
+        // Function to fetch and populate user data (Unchanged)
+        function fetchUserData() {
+            const userData = {
+                fullName: "PUNIL ISHWERLAL SHAH",
+                email: "punilishwerlalshah@gmail.com",
+                dob: "1960-08-26",
+                gender: "Male",
+            };
+
+            // Populate the form fields with fetched data
+            document.getElementById("fullName").value = userData.fullName;
+            document.getElementById("email").value = userData.email;
+            document.getElementById("dob").value = userData.dob;
+            document.getElementById("gender").value = userData.gender;
+        }
+
+        // Function to add a new family member row
+        function addFamilyMember() {
+            const container = document.getElementById("familyMembersContainer");
+
+            // Create new family member form block
+            const familyMemberDiv = document.createElement("div");
+            familyMemberDiv.className = "family-member mb-3 p-3";
+            familyMemberDiv.innerHTML = `
+        <div class="row align-items-center justify-content-between">
+            <div class="col-md-4">
+                <label for="relation">Relation</label>
+                <select name="familyMemberRelation[]" class="form-control">
+                    <option value="" disabled selected>Select Relation</option>
+                    <option value="Father">Father</option>
+                    <option value="Mother">Mother</option>
+                    <option value="Son">Son</option>
+                    <option value="Daughter">Daughter</option>
+                    <option value="Spouse">Spouse</option>
+                </select>
+            </div>
+            <div class="col-md-4 form-group">
+                <label for="name">Name</label>
+                <input type="text" name="familyMemberName[]" class="form-control" placeholder="Enter Name">
+            </div>
+            <div class="col-md-2 form-group">
+                <label for="age">Age</label>
+                <input type="number" name="familyMemberAge[]" class="form-control" placeholder="Enter Age">
+            </div>
+            <div class="col-md-2 d-flex align-items-end justify-content-between">
+                <button type="button" class="btn btn-danger removeFamilyMember">X</button>
+                <button type="button" class="btn btn-success addFamilyMember">+</button>
+            </div>
+        </div>
+    `;
+            container.appendChild(familyMemberDiv);
+
+            // Add event listener for the new remove button
+            familyMemberDiv.querySelector(".removeFamilyMember").addEventListener("click", () => container.removeChild(familyMemberDiv));
+
+            // Add event listener for the new add button
+            familyMemberDiv.querySelector(".addFamilyMember").addEventListener("click", addFamilyMember);
+        }
+
+        // Attach event listener to the initial "Add Family Member" button
+        document.querySelector(".addFamilyMember").addEventListener("click", addFamilyMember);
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<div class="card my-3">
+    <div class="card-header">Income Details</div>
+    <div class="card-body">
+        <label for="monthly-income" class="form-label">Current Monthly Income (in INR)</label>
+        <input type="text" id="monthly-income" class="form-control"
+            placeholder="Enter monthly income" required />
+    </div>
+</div>
+
+<!-- Specific Goals Section -->
+<div class="card my-3">
+    <div class="card-header">Specific Goals</div>
+    <div class="card-body">
+        <label for="goal-amount" class="form-label">Higher Education Goal (in INR)</label>
+        <input type="text" id="goal-amount" class="form-control"
+            placeholder="Enter goal amount" required />
+    </div>
+</div>
+
+<script>
+    function formatNumber(num) {
+        return new Intl.NumberFormat('en-IN').format(num);
+    }
+
+    // Function to format input field
+    function formatInput(event) {
+        let input = event.target;
+        let value = input.value.replace(/[^0-9]/g, ''); // Remove non-numeric characters
+        if (value) {
+            input.value = formatNumber(value);
+        }
+    }
+
+    // Add event listeners to input fields
+    document.getElementById('monthly-income').addEventListener('input', formatInput);
+    document.getElementById('goal-amount').addEventListener('input', formatInput);
+</script>

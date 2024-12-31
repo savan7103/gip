@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Integratedindia</title>
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicons/fiveicon.ico" />
+    <meta name="theme-color" content="#ffffff" />
+    <link href="assets/css/theme.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="assets/css/Bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+</head>
+
+<body>
+
+    <div class="bg-b">
+        <div class="container bg-transparent ">
+            <a class="navbar-brand " href="#"><img class="my-3"
+                    src="assets/images/integrated-enterprises-india-pvt-ltd.webp" style="width:350px;" alt=""></a>
+        </div>
+    </div>
+
+    <section class="">
+        <div class="container pt-5 pb-120">
+            <div class="row">
+                <div class="col-md-8">
+                    <h2 class="text-center">Protect Plus Calculator</h2>
+                    <form id="calculator-form">
+                        <!-- Short Term Loans Section -->
+                         
+                        <div class="card my-3">
+                            <div class="card-header">Short Term Loans (Personal Loan / Credit Card / Auto Loan)</div>
+                            <div class="card-body">
+                                <label for="short-term-loans" class="form-label">Do you have any short-term
+                                    loans?</label>
+                                <select id="short-term-loans" class="form-select">
+                                    <option value="no">No</option>
+                                    <option value="yes">Yes</option>
+                                </select>
+                                <div class="mt-3" id="short-term-loans-amount-section" style="display:none;">
+                                    <label for="short-term-loans-amount" class="form-label">Outstanding Amount (in
+                                        INR)</label>
+                                    <input type="number" id="short-term-loans-amount" class="form-control"
+                                        placeholder="Enter amount" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Long Term Loans Section -->
+                        <div class="card my-3">
+                            <div class="card-header">Long Term Loans (Housing Loan)</div>
+                            <div class="card-body">
+                                <label for="long-term-loans" class="form-label">Do you have any long-term loans?</label>
+                                <select id="long-term-loans" class="form-select">
+                                    <option value="no">No</option>
+                                    <option value="yes">Yes</option>
+                                </select>
+                                <div class="mt-3" id="long-term-loans-amount-section" style="display:none;">
+                                    <label for="long-term-loans-amount" class="form-label">Outstanding Amount (in
+                                        INR)</label>
+                                    <input type="number" id="long-term-loans-amount" class="form-control"
+                                        placeholder="Enter amount" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Income Replacement Years Section -->
+                        <div class="card my-3">
+                            <div class="card-header">Income Replacement Duration</div>
+                            <div class="card-body">
+                                <label for="income-replacement-years" class="form-label">For how many years would you
+                                    like income replacement?</label>
+                                <input type="number" id="income-replacement-years" class="form-control"
+                                    placeholder="Enter number of years" required />
+                            </div>
+                        </div>
+
+
+                        <!-- Income Section -->
+                        <div class="card my-3">
+                            <div class="card-header">Income Details</div>
+                            <div class="card-body">
+                                <label for="monthly-income" class="form-label">Current Monthly Income (in INR)</label>
+                                <input type="text" id="monthly-income" class="form-control"
+                                    placeholder="Enter monthly income" required />
+                            </div>
+                        </div>
+                        
+                        <!-- Specific Goals Section -->
+                        <div class="card my-3">
+                            <div class="card-header">Specific Goals</div>
+                            <div class="card-body">
+                                <label for="goal-amount" class="form-label">Higher Education Goal (in INR)</label>
+                                <input type="text" id="goal-amount" class="form-control"
+                                    placeholder="Enter goal amount" required />
+                            </div>
+                        </div>
+                        <!-- Family Members Section -->
+                        <div class="card my-3">
+                            <div class="card-header">Family Members</div>
+                            <div class="card-body">
+                                <label for="family-member-1-age" class="form-label">Member 1 Age</label>
+                                <input type="number" id="family-member-1-age" class="form-control"
+                                    placeholder="Enter age" required />
+                                <label for="family-member-2-age" class="form-label">Member 2 Age</label>
+                                <input type="number" id="family-member-2-age" class="form-control"
+                                    placeholder="Enter age" required />
+                                <label for="family-member-3-age" class="form-label">Member 3 Age</label>
+                                <input type="number" id="family-member-3-age" class="form-control"
+                                    placeholder="Enter age" required />
+                            </div>
+                        </div>
+
+
+                        <!-- Calculate Button -->
+                        <button type="button" class="btn btn-primary" id="calculate-btn">Calculate</button>
+                    </form>
+
+                    <!-- Validation Error Section -->
+                    <div class="alert alert-danger mt-3" id="validation-error" style="display:none;">
+                        <strong>Error!</strong> Please fill in all required fields.
+                    </div>
+
+                    <!-- Result Section -->
+                    <div class="card my-4" id="result-section" style="display:none;">
+                        <div class="card-header">Calculation Results</div>
+                        <div class="card-body">
+                            <p><strong>Short Term Loan Outstanding:</strong> ₹<span
+                                    id="short-term-loans-outstanding"></span></p>
+                            <p><strong>Long Term Loan Outstanding:</strong> ₹<span
+                                    id="long-term-loans-outstanding"></span></p>
+                            <p><strong>Specific Goal Amount:</strong> ₹<span id="goal-required"></span></p>
+                            <p><strong>Total Life Insurance Required:</strong> ₹<span
+                                id="life-insurance-required"></span></p>
+                            <p><strong>Family Members Insurance Cover:</strong> <span id="member-insurance"></span></p>
+                           
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-3 mb-md-0 exist-img">
+                    <img src="assets/images/platform.webp" class="img-fluid" alt="accordion" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            function formatNumber(num) {
+                return new Intl.NumberFormat('en-IN').format(num);
+            }
+        
+            // Function to format input field
+            function formatInput(event) {
+                let input = event.target;
+                let value = input.value.replace(/[^0-9]/g, ''); // Remove non-numeric characters
+                if (value) {
+                    input.value = formatNumber(value);
+                }
+            }
+
+            // Handle changes for short-term and long-term loan sections
+            $('#short-term-loans').change(function () {
+                $('#short-term-loans-amount-section').toggle($(this).val() === 'yes');
+            });
+
+            $('#long-term-loans').change(function () {
+                $('#long-term-loans-amount-section').toggle($(this).val() === 'yes');
+            });
+
+            // Handle the calculate button click
+            function getAgeIcon(age) {
+                let icon = '';
+            
+                if (age < 25) {
+                    icon = '<img class="age-icon" src="assets/images/child.png" alt="">'; // Icon for <25
+                } else if (age >= 25 && age <= 40) {
+                    icon = '<img class="age-icon" src="assets/images/young.png" alt="">'; // Icon for 25 to 40
+                } else if (age > 40 ) {
+                    icon = '<img class="age-icon" src="assets/images/old.png" alt="">'; // Icon for 40 to 60
+                }
+            
+                if (icon) {
+                    return `<div class="d-flex align-items-center">${icon}</div>`; // Wrap icon in flex container
+                }
+            
+                return ''; // No icon for other ages
+            }
+            
+            // Handle the calculate button click
+            $('#calculate-btn').click(function () {
+                $('#validation-error').hide();
+
+                // Check if all required fields are filled
+                if (!$('input[required]').filter(function () { return !this.value; }).length) {
+                    // Get input values and parse them properly
+                    const shortTermLoans = $('#short-term-loans').val() === 'yes' ? parseInputAmount($('#short-term-loans-amount').val()) : 0;
+                    const longTermLoans = $('#long-term-loans').val() === 'yes' ? parseInputAmount($('#long-term-loans-amount').val()) : 0;
+                    const goalAmount = parseInputAmount($('#goal-amount').val());
+                    const monthlyIncome = parseInputAmount($('#monthly-income').val());
+                    const incomeReplacementYears = parseInt($('#income-replacement-years').val()) || 0;
+
+                    // Correct Income Replacement Calculation
+                    const incomeReplacement = (monthlyIncome * 12) * incomeReplacementYears; // Monthly Income * 12 * Years
+
+                    // Skip member insurance in the total calculation
+                    const totalLifeInsuranceRequired = shortTermLoans + longTermLoans + incomeReplacement + goalAmount;
+
+                    // Family Members Age and Insurance Cover Calculation (for display purposes only)
+                    const memberAges = [
+                        parseInt($('#family-member-1-age').val()) || 0,
+                        parseInt($('#family-member-2-age').val()) || 0,
+                        parseInt($('#family-member-3-age').val()) || 0
+                    ];
+
+                    // Insurance cover based on age
+                    const memberInsurance = memberAges.map(age => {
+                        if (age < 25) return 500000;
+                        if (age >= 25 && age <= 40) return 1000000;
+                        if (age > 40) return 2000000;  // Changed this condition to include anyone above 40
+                        return 0;
+                    });
+                    
+
+                    // Display Results
+                    $('#short-term-loans-outstanding').text(formatNumber(shortTermLoans));
+                    $('#long-term-loans-outstanding').text(formatNumber(longTermLoans));
+                    $('#goal-required').text(formatNumber(goalAmount));
+                    $('#life-insurance-required').text(formatNumber(totalLifeInsuranceRequired));
+
+                    // Show member insurance details with icons for display purposes only (not affecting total)
+                    $('#member-insurance').html(
+                        memberInsurance.map((val, idx) => {
+                            const icon = getAgeIcon(memberAges[idx]);
+                            return `<div class="d-flex align-items-center">
+                                         ${icon}<span>Member ${idx + 1} (Age ${memberAges[idx]}): ₹${formatNumber(val)}</span>
+                                       
+                                    </div>`;
+                        }).join(' ')
+                    );
+                    $('#result-section').show();
+                } else {
+                    $('#validation-error').show();
+                }
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>
