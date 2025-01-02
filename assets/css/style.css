@@ -824,3 +824,74 @@ input::placeholder {
 .card{
   cursor: pointer;
 }
+.goal-icon{
+  height: 50px;
+  width: 50px;
+  margin-right: 10px;
+}
+ /* Styling for the table */
+ #goalResultsTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Table header styles */
+#goalResultsTable thead {
+  background-color: #4CAF50;
+  color: white;
+}
+
+#goalResultsTable th {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+/* Table body styles */
+#goalResultsTable tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#goalResultsTable td {
+  padding: 12px 15px;
+}
+
+/* Hover effect on rows */
+#goalResultsTable tbody tr:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+/* Zebra striping for table rows */
+#goalResultsTable tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Additional styling for specific columns */
+#goalResultsTable th, #goalResultsTable td {
+  text-align: center;
+}
+
+/* Adding borders to cells */
+#goalResultsTable th, #goalResultsTable td {
+  border: 1px solid #ddd;
+}
+
+/* Adding rounded corners for table */
+#goalResultsTable {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Add shadow for depth */
+#goalResultsTable {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive design for small screens */
+@media (max-width: 768px) {
+  #goalResultsTable th, #goalResultsTable td {
+      padding: 10px;
+  }
+}
