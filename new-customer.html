@@ -138,10 +138,12 @@
             font-weight: 600;
             transition: transform 0.3s ease-in-out;
         }
-
+.card {
+    background: transparent;
+    border: none;
+}
         .card:hover {
-            background-color: #143a8023;
-            border: none;
+            box-shadow: 0 0 15px rgba(0, 0, 0,0.3);
         }
 
         /* Hover effect for card title (subtle grow) */
@@ -1036,8 +1038,8 @@
         // Function to fetch and populate user data (Unchanged)
         function fetchUserData() {
             const userData = {
-                fullName: "PUNIL ISHWERLAL SHAH",
-                email: "punilishwerlalshah@gmail.com",
+                fullName: "AMBALAL ISHWERLAL SHAH",
+                email: "ambalalishwerlalshah@gmail.com",
                 dob: "1960-08-26",
                 gender: "Male",
             };

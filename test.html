@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-US" dir="ltr">
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -14,214 +15,483 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
 </head>
 
-<body>
-
-<div class="bg-b">
-    <div class="container bg-transparent ">
-        <a class="navbar-brand " href="#"><img class="my-3"
-                src="assets/images/integrated-enterprises-india-pvt-ltd.webp" style="width:350px;" alt=""></a>
-    </div>
-</div>
-
-<section class="">
-    <div class="container pt-5 pb-120">
-        <div class="row">
-            <div class="col-md-8">
-                <h2 class="text-center">Protect Plus Calculator</h2>
-                <form id="calculator-form">
-                    <!-- Short Term Loans Section -->
-                    <div class="card my-3">
-                        <div class="card-header">Short Term Loans (Personal Loan / Credit Card / Auto Loan)</div>
-                        <div class="card-body">
-                            <label for="short-term-loans" class="form-label">Do you have any short-term loans?</label>
-                            <select id="short-term-loans" class="form-select">
-                                <option value="no">No</option>
-                                <option value="yes">Yes</option>
-                            </select>
-                            <div class="mt-3" id="short-term-loans-amount-section" style="display:none;">
-                                <label for="short-term-loans-amount" class="form-label">Outstanding Amount (in INR)</label>
-                                <input type="number" id="short-term-loans-amount" class="form-control" placeholder="Enter amount" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Long Term Loans Section -->
-                    <div class="card my-3">
-                        <div class="card-header">Long Term Loans (Housing Loan)</div>
-                        <div class="card-body">
-                            <label for="long-term-loans" class="form-label">Do you have any long-term loans?</label>
-                            <select id="long-term-loans" class="form-select">
-                                <option value="no">No</option>
-                                <option value="yes">Yes</option>
-                            </select>
-                            <div class="mt-3" id="long-term-loans-amount-section" style="display:none;">
-                                <label for="long-term-loans-amount" class="form-label">Outstanding Amount (in INR)</label>
-                                <input type="number" id="long-term-loans-amount" class="form-control" placeholder="Enter amount" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Income Section -->
-                    <div class="card my-3">
-                        <div class="card-header">Income Details</div>
-                        <div class="card-body">
-                            <label for="monthly-income" class="form-label">Current Monthly Income (in INR)</label>
-                            <input type="number" id="monthly-income" class="form-control" placeholder="Enter monthly income" required />
-                        </div>
-                    </div>
-
-                    <!-- Family Members Section -->
-                    <div class="card my-3">
-                        <div class="card-header">Family Members</div>
-                        <div class="card-body">
-                            <label for="family-member-1-age" class="form-label">Member 1 Age</label>
-                            <input type="number" id="family-member-1-age" class="form-control" placeholder="Enter age" required />
-                            <label for="family-member-2-age" class="form-label">Member 2 Age</label>
-                            <input type="number" id="family-member-2-age" class="form-control" placeholder="Enter age" required />
-                            <label for="family-member-3-age" class="form-label">Member 3 Age</label>
-                            <input type="number" id="family-member-3-age" class="form-control" placeholder="Enter age" required />
-                        </div>
-                    </div>
-
-                    <!-- Specific Goals Section -->
-                    <div class="card my-3">
-                        <div class="card-header">Specific Goals</div>
-                        <div class="card-body">
-                            <label for="goal-amount" class="form-label">Higher Education Goal (in INR)</label>
-                            <input type="number" id="goal-amount" class="form-control" placeholder="Enter goal amount" required />
-                        </div>
-                    </div>
-
-                    <!-- Income Replacement Years Section -->
-                    <div class="card my-3">
-                        <div class="card-header">Income Replacement Duration</div>
-                        <div class="card-body">
-                            <label for="income-replacement-years" class="form-label">For how many years would you like income replacement?</label>
-                            <input type="number" id="income-replacement-years" class="form-control" placeholder="Enter number of years" required />
-                        </div>
-                    </div>
-
-                    <!-- Calculate Button -->
-                    <button type="button" class="btn btn-primary" id="calculate-btn">Calculate</button>
-                </form>
-
-                <!-- Validation Error Section -->
-                <div class="alert alert-danger mt-3" id="validation-error" style="display:none;">
-                    <strong>Error!</strong> Please fill in all required fields.
-                </div>
-
-                <!-- Result Section -->
-                <div class="card my-4" id="result-section" style="display:none;">
-                    <div class="card-header">Calculation Results</div>
-                    <div class="card-body">
-                        <p><strong>Short Term Loan Outstanding:</strong> ₹<span id="short-term-loans-outstanding"></span></p>
-                        <p><strong>Long Term Loan Outstanding:</strong> ₹<span id="long-term-loans-outstanding"></span></p>
-                        <p><strong>Specific Goal Amount:</strong> ₹<span id="goal-required"></span></p>
-                        <p><strong>Family Members Insurance Cover:</strong> <span id="member-insurance"></span></p>
-                        <p><strong>Total Life Insurance Required:</strong> ₹<span id="life-insurance-required"></span></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4 mb-3 mb-md-0 exist-img">
-                <img src="assets/images/platform.webp" class="img-fluid" alt="accordion" />
-            </div>
-        </div>
-    </div>
-</section>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-  $(document).ready(function () {
-      // Function to format numbers in Indian currency format
-      function formatNumber(num) {
-          return new Intl.NumberFormat('en-IN').format(num);
-      }
-
-      // Function to parse input values with commas (e.g., 1,00,000) to float or integer
-      function parseInputAmount(amount) {
-          const cleanedAmount = amount.replace(/,/g, ''); // Remove commas
-          const parsedValue = parseFloat(cleanedAmount);
-          return isNaN(parsedValue) ? 0 : parsedValue; // If it's not a valid number, return 0
-      }
-
-      // Handle changes for short-term and long-term loan sections
-      $('#short-term-loans').change(function () {
-          $('#short-term-loans-amount-section').toggle($(this).val() === 'yes');
-      });
-
-      $('#long-term-loans').change(function () {
-          $('#long-term-loans-amount-section').toggle($(this).val() === 'yes');
-      });
-
-      // Handle the calculate button click
-      function getAgeIcon(age) {
-        if (age < 25) {
-            return '<img class="age-icon" src="assets/images/child.png" alt=""> <br>'; // Icon for <25
-        } else if (age >= 25 && age <= 40) {
-            return '<img class="age-icon" src="assets/images/young.png" alt=""><br>'; // Icon for 25 to 40
-        } else if (age > 40 && age <= 60) {
-            return '<img class="age-icon" src="assets/images/old.png" alt="">'; // Icon for 40 to 60
-        }
-        return ''; // No icon for other ages
+<style>
+    /* Custom styling for checkboxes */
+    .form-check-input:checked {
+        background-color: #28a745;
+        /* Green color for checked */
+        border-color: #28a745;
     }
 
-    // Handle the calculate button click
-    $('#calculate-btn').click(function () {
-        $('#validation-error').hide();
+    .form-check-input:focus {
+        box-shadow: none;
+    }
 
-        // Check if all required fields are filled
-        if (!$('input[required]').filter(function () { return !this.value; }).length) {
-            // Get input values and parse them properly
-            const shortTermLoans = $('#short-term-loans').val() === 'yes' ? parseInputAmount($('#short-term-loans-amount').val()) : 0;
-            const longTermLoans = $('#long-term-loans').val() === 'yes' ? parseInputAmount($('#long-term-loans-amount').val()) : 0;
-            const goalAmount = parseInputAmount($('#goal-amount').val());
-            const monthlyIncome = parseInputAmount($('#monthly-income').val());
-            const incomeReplacementYears = parseInt($('#income-replacement-years').val()) || 0;
+    .form-check-input {
+        width: 20px;
+        height: 20px;
+        border-radius: 4px;
+        border: 2px solid #143980;
+        background-color: #fff;
+        transition: all 0.3s ease;
+    }
 
-            // Correct Income Replacement Calculation
-            const incomeReplacement = (monthlyIncome * 12) * incomeReplacementYears; // Monthly Income * 12 * Years
+    .form-check-label {
+        font-size: 16px;
+        padding-top: 3px;
+    }
 
-            // Skip member insurance in the total calculation
-            const totalLifeInsuranceRequired = shortTermLoans + longTermLoans + incomeReplacement + goalAmount;
+    /* Hover effect */
+    .form-check-input:checked+.form-check-label {
+        color: #28a745;
+        /* Green when selected */
+    }
+    .form-label{
+        font-weight: bold;
+    }
+    .form-check {
+        margin-bottom: 10px;
+    }
 
-            // Family Members Age and Insurance Cover Calculation (for display purposes only)
-            const memberAges = [
-                parseInt($('#family-member-1-age').val()) || 0,
-                parseInt($('#family-member-2-age').val()) || 0,
-                parseInt($('#family-member-3-age').val()) || 0
-            ];
+    /* Add some space around checkboxes */
+    .goal-checkbox {
+        margin-right: 15px;
+    }
 
-            // Insurance cover based on age
-            const memberInsurance = memberAges.map(age => {
-                if (age < 25) return 500000;
-                if (age >= 25 && age <= 40) return 1000000;
-                if (age > 40 && age <= 60) return 2000000;
-                return 0;
+    /* Style the wrapper for a more modern feel */
+    .checkbox-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+</style>
+
+<body>
+
+    <div class="bg-b">
+        <div class="container bg-transparent ">
+            <a class="navbar-brand " href="#"><img class="my-3"
+                    src="assets/images/integrated-enterprises-india-pvt-ltd.webp" style="width:350px;" alt=""></a>
+        </div>
+    </div>
+
+    <section class="">
+        <div class="container pt-5 pb-120">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1 class="text-center mb-4">Financial Goal Planner</h1>
+
+                    <!-- Form -->
+                    <form id="goalForm">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="age" class="form-label">Age</label>
+                                <input type="number" class="form-control" id="age" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="income" class="form-label">Annual Income</label>
+                                <input type="text" oninput="formatCurrency(this)" class="form-control" id="income"
+                                    required>
+                            </div>
+                        </div>
+
+                        <!-- Multi-select for Goal type -->
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <label class="form-label">Select Your Goal</label><br>
+                                <div class="checkbox-wrapper">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input goal-checkbox" id="education"
+                                            value="Education">
+                                        <label class="form-check-label" for="education">Education</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input goal-checkbox" id="marriage"
+                                            value="Marriage">
+                                        <label class="form-check-label" for="marriage">Marriage</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input goal-checkbox" id="travel"
+                                            value="Travel/Holidays">
+                                        <label class="form-check-label" for="travel">Travel/Holidays</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input goal-checkbox" id="retirement"
+                                            value="Retirement">
+                                        <label class="form-check-label" for="retirement">Retirement</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input goal-checkbox" id="house"
+                                            value="House">
+                                        <label class="form-check-label" for="house">House</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input goal-checkbox" id="car"
+                                            value="Car">
+                                        <label class="form-check-label" for="car">Car</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="goalYear" class="form-label">Goal Accomplishment Year</label>
+                                <!-- Dropdown for goal year selection -->
+                                <select id="goalYear" class="form-control" required>
+                                    <!-- Options will be populated dynamically -->
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="targetAmount" class="form-label">Target Amount</label>
+                                <input type="text" oninput="formatCurrency(this)" class="form-control mt-2" id="targetAmount"
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="expectedReturn" class="form-label">Expected Return (%)</label>
+                                <input type="number" step="0.01" class="form-control" id="expectedReturn" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="currentSavings" class="form-label">Current Savings</label>
+                                <input type="text" oninput="formatCurrency(this)" class="form-control"
+                                    id="currentSavings" required>
+                            </div>
+                        </div>
+
+                        <!-- New input fields for Investment Type -->
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <label class="form-label">Investment Type</label>
+                                <div class="d-flex gap-4">
+                                    <div class="form-check">
+                                        <input type="radio" class="form-check-input" name="investmentType"
+                                            id="oneTimeCheckbox">
+                                        <label class="form-check-label" for="oneTimeCheckbox">Lumpsum</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="radio" class="form-check-input" name="investmentType" id="sipCheckbox">
+                                        <label class="form-check-label" for="sipCheckbox">Monthly SIP</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="radio" class="form-check-input" name="investmentType"
+                                            id="bothCheckbox">
+                                        <label class="form-check-label" for="bothCheckbox">Both</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Fields for Lumpsum and SIP percentages (hidden by default) -->
+                        <div class="row mb-3" id="investmentFields" style="display: none;">
+                            <div class="col-md-6">
+                                <label for="oneTimeInvestment" class="form-label">One Time Investment (%)</label>
+                                <input type="number" class="form-control" id="oneTimeInvestment"
+                                    placeholder="Enter Lumpsum %" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="monthlySIP" class="form-label">Monthly SIP (%)</label>
+                                <input type="number" class="form-control" id="monthlySIP" placeholder="Enter SIP %"
+                                    required>
+                            </div>
+                            <small class="text-danger" id="errorMessage" style="display: none;">The total of Lumpsum and
+                                SIP percentages must equal 100%.</small>
+                        </div>
+
+
+                        <button type="submit" class="btn btn-primary" id="calculateButton" disabled>Calculate</button>
+                    </form>
+
+                    <!-- Results Section -->
+                    <div class="result alert alert-success mt-4" id="resultContainer" style="display: none;">
+                        <h4>Calculation Results</h4>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Details</th>
+                                    <th>Amount</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Target Savings Amount</td>
+                                    <td colspan="2" id="targetSavings">₹0</td>
+                                </tr>
+                                <tr>
+                                    <td>Goal Accomplishment Year</td>
+                                    <td colspan="2" id="goalYearResult">0</td>
+                                </tr>
+                                <tr>
+                                    <td>Your Current Savings</td>
+                                    <td colspan="2" id="currentSavingsResult">₹0</td>
+                                </tr>
+                                <tr>
+                                    <td>Current Savings Growth</td>
+                                    <td colspan="2" id="currentGrowth">₹0</td>
+                                </tr>
+                                <tr>
+                                    <td>One Time Investment</td>
+                                    <td id="oneTime100">₹0</td>
+                                    <!-- <td id="oneTime50">₹0</td> -->
+                                </tr>
+                                <tr>
+                                    <td>Monthly SIP</td>
+                                    <td id="sip100">₹0</td>
+                                    <!-- <td id="sip50">₹0</td> -->
+                                </tr>
+                                <tr>
+                                    <td>Selected Goals</td>
+                                    <td colspan="2" id="selectedGoals">None</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-3 mb-md-0 exist-img">
+                    <img src="assets/images/platform.webp" class="img-fluid" alt="accordion" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        function formatCurrency(input) {
+            let value = input.value.replace(/[^0-9.]/g, '');  // Allow only digits and decimal
+        
+            // Use the 'en-IN' locale for Indian number formatting
+            let formattedValue = new Intl.NumberFormat('en-IN').format(value);
+        
+            input.value = formattedValue;  // Set the formatted value
+        }
+        
+        // Generate a range of future years
+        function generateYearOptions() {
+            const currentYear = new Date().getFullYear();
+            const yearSelect = $('#goalYear');
+
+            // Clear existing options
+            yearSelect.empty();
+
+            // Add the current year
+            yearSelect.append(`<option value="${currentYear}">${currentYear}</option>`);
+
+            // Add the next 40 years
+            for (let i = 1; i <= 40; i++) {
+                const year = currentYear + i;
+                yearSelect.append(`<option value="${year}">${year}</option>`);
+            }
+        }
+        $(document).ready(function () {
+            // Show/hide investment fields based on radio selection
+            $('input[name="investmentType"]').on('change', function () {
+                const selectedType = $(this).attr('id');
+                if (selectedType === 'bothCheckbox') {
+                    $('#investmentFields').show();
+                } else {
+                    $('#investmentFields').hide();
+                    $('#oneTimeInvestment').val("");
+                    $('#monthlySIP').val("");
+                    $('#errorMessage').hide();
+                    $('#calculateButton').prop('disabled', false); // Enable button for single selections
+                }
             });
 
-            // Display Results
-            $('#short-term-loans-outstanding').text(formatNumber(shortTermLoans));
-            $('#long-term-loans-outstanding').text(formatNumber(longTermLoans));
-            $('#goal-required').text(formatNumber(goalAmount));
-            $('#life-insurance-required').text(formatNumber(totalLifeInsuranceRequired));
+            // Validate total percentage for "Both" option
+            $('#oneTimeInvestment, #monthlySIP').on('input', function () {
+                const oneTimeValue = parseFloat($('#oneTimeInvestment').val()) || 0;
+                const sipValue = parseFloat($('#monthlySIP').val()) || 0;
+                if (oneTimeValue + sipValue !== 100) {
+                    $('#errorMessage').show();
+                    $('#calculateButton').prop('disabled', true);
+                } else {
+                    $('#errorMessage').hide();
+                    $('#calculateButton').prop('disabled', false);
+                }
+            });
+        });
+        $(document).ready(function () {
+            // Populate the goal year dropdown with future years
+            generateYearOptions();
 
-            // Show member insurance details with icons for display purposes only (not affecting total)
-            $('#member-insurance').html(
-                memberInsurance.map((val, idx) => {
-                    const icon = getAgeIcon(memberAges[idx]);
-                    return `Member ${idx + 1} (Age ${memberAges[idx]}): ₹${formatNumber(val)} ${icon}`;
-                }).join(', ')
-            );
+            // Simulate API call for demo data
+            getDemoData().then((demoData) => {
+                $('#age').val(demoData.age);
+                $('#income').val(demoData.income.toLocaleString());
+            });
 
-            $('#result-section').show();
-        } else {
-            $('#validation-error').show();
-        }
-    });
-  });
-</script>
+            $(document).ready(function () {
+                // Toggle investment fields based on selected investment type
+                $('input[name="investmentType"]').on('change', function () {
+                    const selectedType = $('input[name="investmentType"]:checked').attr('id');
+
+                    // Show or hide the Lumpsum and SIP fields based on the selection
+                    if (selectedType === 'bothCheckbox') {
+                        $('#investmentFields').show();
+                    } else {
+                        $('#investmentFields').hide();
+                    }
+                });
+
+                $('#goalForm').on('submit', function (e) {
+                    e.preventDefault();
+                
+                    // Validate checkboxes and inputs
+                    const isLumpsumChecked = $('#oneTimeCheckbox').is(':checked');
+                    const isSIPChecked = $('#sipCheckbox').is(':checked');
+                    const isBothChecked = $('#bothCheckbox').is(':checked');
+                
+                    const oneTimeValue = parseFloat($('#oneTimeInvestment').val()) || 0;
+                    const sipValue = parseFloat($('#monthlySIP').val()) || 0;
+                    const totalInvestment = oneTimeValue + sipValue;
+                
+                    // Show error message if "Both" is selected and total investment doesn't equal 100%
+                    if (isBothChecked && totalInvestment !== 100) {
+                        $('#errorMessage').show();
+                        return;
+                    } else {
+                        $('#errorMessage').hide();
+                    }
+                
+                    // Validate that at least one option is selected
+                    if (!isLumpsumChecked && !isSIPChecked && !isBothChecked) {
+                        alert("Please select at least one investment option: Lumpsum, SIP, or Both.");
+                        return;
+                    }
+                
+                    // Retrieve form data
+                    const targetAmount = parseFloat($('#targetAmount').val().replace(/,/g, ''));
+                    const currentSavings = parseFloat($('#currentSavings').val().replace(/,/g, ''));
+                    const expectedReturn = parseFloat($('#expectedReturn').val()) / 100;
+                    const goalYear = parseInt($('#goalYear').val());
+                    const currentYear = new Date().getFullYear();
+                    const tenure = goalYear - currentYear;
+                
+                    if (tenure <= 0) {
+                        alert("Goal accomplishment year must be in the future.");
+                        return;
+                    }
+                
+                    // Calculate growth of current savings
+                    const currentSavingsGrowth = currentSavings * Math.pow(1 + expectedReturn, tenure);
+                    const remainingSavings = targetAmount - currentSavingsGrowth;
+                
+                    let oneTimeInvestmentAmount = 0;
+                    let monthlySIPAmount = 0;
+                
+                    // If Lumpsum is selected, calculate one-time investment (no need for percentage)
+                    if (isLumpsumChecked) {
+                        oneTimeInvestmentAmount = remainingSavings;
+                    }
+                
+                    // If SIP is selected, calculate SIP amount (no need for percentage)
+                    if (isSIPChecked) {
+                        monthlySIPAmount = remainingSavings / ((Math.pow(1 + expectedReturn / 12, tenure * 12) - 1) / (expectedReturn / 12));
+                    }
+                
+                    // If Both is selected, calculate one-time and SIP amounts based on entered percentages
+                    if (isBothChecked) {
+                        if (oneTimeValue + sipValue !== 100) {
+                            $('#errorMessage').show();
+                            return;
+                        }
+                        oneTimeInvestmentAmount = remainingSavings * (oneTimeValue / 100);
+                        monthlySIPAmount = remainingSavings * (sipValue / 100) / ((Math.pow(1 + expectedReturn / 12, tenure * 12) - 1) / (expectedReturn / 12));
+                    }
+                
+                    // Get selected goals
+                    let selectedGoals = [];
+                    $('.goal-checkbox:checked').each(function () {
+                        selectedGoals.push($(this).val());
+                    });
+                    const selectedGoalsText = selectedGoals.length > 0 ? selectedGoals.join(", ") : "None";
+                
+                    // Update the results table
+                    $('#targetSavings').text(`₹${targetAmount.toLocaleString()}`);
+                    $('#goalYearResult').text(goalYear);
+                    $('#currentSavingsResult').text(`₹${currentSavings.toLocaleString()}`);
+                    $('#currentGrowth').text(`₹${currentSavingsGrowth.toLocaleString()}`);
+                    $('#oneTime100').text(`₹${oneTimeInvestmentAmount.toLocaleString()}`);
+                    $('#sip100').text(`₹${monthlySIPAmount.toLocaleString()}`);
+                    $('#selectedGoals').text(selectedGoalsText);
+                
+                    // Show the results section
+                    $('#resultContainer').fadeIn();
+                });
+                
+                // Handle radio button changes to toggle 'required' attribute and show/hide investment fields
+                $('input[name="investmentType"]').on('change', function () {
+                    const isLumpsumChecked = $('#oneTimeCheckbox').is(':checked');
+                    const isBothChecked = $('#bothCheckbox').is(':checked');
+                    
+                    // Show or hide investment fields based on selection
+                    if (isBothChecked) {
+                        $('#investmentFields').show();  // Show the input fields for Lumpsum and SIP
+                        $('#oneTimeInvestment').attr('required', 'required');
+                        $('#monthlySIP').attr('required', 'required');
+                    } else {
+                        $('#investmentFields').hide();  // Hide the input fields for Lumpsum and SIP
+                        $('#oneTimeInvestment').removeAttr('required');
+                        $('#monthlySIP').removeAttr('required');
+                    }
+                
+                    // If neither Lumpsum nor SIP is selected, hide the fields
+                    if (!isLumpsumChecked && !isSIPChecked) {
+                        $('#investmentFields').hide();
+                    }
+                });
+                
+                // Handle radio button changes to toggle 'required' attribute
+                $('input[name="investmentType"]').on('change', function () {
+                    const isLumpsumChecked = $('#oneTimeCheckbox').is(':checked');
+
+                    // Show or hide investment fields based on selection
+                    if (isLumpsumChecked) {
+                        $('#investmentFields').hide();
+                        $('#oneTimeInvestment').removeAttr('required');
+                        $('#monthlySIP').removeAttr('required');
+                    } else {
+                        $('#investmentFields').show();
+                        $('#oneTimeInvestment').attr('required', 'required');
+                        $('#monthlySIP').attr('required', 'required');
+                    }
+                });
+            });
 
 
+            // Simulated API call for demo data
+            function getDemoData() {
+                return new Promise((resolve) => {
+                    setTimeout(() => {
+                        resolve({ age: 30, income: 600000 });
+                    }, 1000);
+                });
+            }
+
+            // Generate a range of future years
+            function generateYearOptions() {
+                const currentYear = new Date().getFullYear();
+                const yearSelect = $('#goalYear');
+
+                // Clear existing options
+                yearSelect.empty();
+
+                // Add the current year
+                yearSelect.append(`<option value="${currentYear}">${currentYear}</option>`);
+
+                // Add the next 40 years
+                for (let i = 1; i <= 40; i++) {
+                    const year = currentYear + i;
+                    yearSelect.append(`<option value="${year}">${year}</option>`);
+                }
+            }
+        });
+    </script>
 </body>
+
 </html>
