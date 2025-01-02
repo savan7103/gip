@@ -108,13 +108,3 @@ document.getElementById("step3btn").addEventListener("click", function () {
     document.getElementById("emiGraphContainer").style.display = "block";
     document.getElementById("nxtbtn").style.display = "block";
 });
-function formatCurrency(input) {
-    let value = input.value.replace(/,/g, ''); // Remove existing commas
-    
-    // Allow only numbers and restrict non-numeric characters
-    value = value.replace(/[^0-9]/g, '');
-    
-    if (value) {
-        input.value = Number(value).toLocaleString('en-IN'); // Format in INR
-    }
-}
